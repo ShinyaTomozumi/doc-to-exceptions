@@ -1,0 +1,22 @@
+## example
+version: '1.0'
+copyright: Sample
+author: AuthorName
+description: |
+  Description
+type: api
+exceptions:
+  unknown:
+    result: err_unknown
+    code: -1
+    message: |
+      Unknown error.
+    response_code: 400
+    description: |
+      Exception errors when they occur.
+  invalid_argument:
+    code: -2
+    message: |
+      Input value is invalid.
+    description: |
+      Exception handling used when input values sent from the screen are invalid.
