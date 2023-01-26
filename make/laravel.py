@@ -1,6 +1,5 @@
 import os
 import shutil
-import datetime
 
 from data.import_document import ImportDocument
 from models.parameter_config import ParameterConfig
