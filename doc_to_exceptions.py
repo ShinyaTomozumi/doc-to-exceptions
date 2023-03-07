@@ -69,8 +69,9 @@ if __name__ == '__main__':
     import_document = ImportDocument(parameter_config)
 
     # Exceptionファイルの作成
-    if parameter_config.project == 'laravel':
-        # For laravel
+    if parameter_config.project == 'laravel' \
+            or parameter_config.project == 'lumen':
+        # For laravel or lumen
         laravel = Laravel(parameter_config, import_document)
         laravel.make()
     else:

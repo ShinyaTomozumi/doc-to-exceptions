@@ -23,7 +23,10 @@ class Laravel:
         self._import_document = import_document
         self._parameter_config = parameter_config
         if self._parameter_config.output_dir_path == '':
-            self._parameter_config.output_dir_path = 'output_exception_laravel/app/Exceptions'
+            if self._parameter_config.project == 'lumen':
+                self._parameter_config.output_dir_path = 'output_exception_lumen/app/Exceptions'
+            else:
+                self._parameter_config.output_dir_path = 'output_exception_laravel/app/Exceptions'
         # テンプレートソースのフォルダを指定する
         self._template_dir = os.path.dirname(__file__) + '/../template/laravel'
 
@@ -50,7 +53,12 @@ class Laravel:
 
         # 共通で使用するExceptionの基底ソースコードを作成する。
         # Handlerファイルの作成
-        template_file = open(self._template_dir + '/Handler.php', 'r')
+        if self._parameter_config.project == 'lumen':
+            template_dir_handler = os.path.dirname(__file__) + '/../template/lumen'
+        else:
+            template_dir_handler = self._template_dir
+
+        template_file = open(template_dir_handler + '/Handler.php', 'r')
         template_source = template_file.read()
         source_file = open(self._parameter_config.output_dir_path + '/Handler.php', 'w')
         source_file.write(template_source)

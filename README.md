@@ -48,12 +48,12 @@ exceptions: # Add exception handling below.。
 ## Options
 The options for the command at runtime will be as follows.
 
-| Option   | Description                                                                                                                        |
-|----------|------------------------------------------------------------------------------------------------------------------------------------|
-| -i       | Required.<br>The path of the yaml file to be read.                                                                                 |
-| -project | Required.<br>The type of project to incorporate the generated source code.<br>The following are currently supported.<br> - laravel |
-| -o       | Optional.<br>The path of the output destination.<br>Defaults to the name of the selected project.                                  |
-| -doc     | Optional.<br>The type of document to be loaded.<br>The following document types are supported.<br> - yaml                          |
+| Option   | Description                                                                                                                                    |
+|----------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| -i       | Required.<br>The path of the yaml file to be read.                                                                                             |
+| -project | Required.<br>The type of project to incorporate the generated source code.<br>The following are currently supported.<br> - laravel<br> - lumen |
+| -o       | Optional.<br>The path of the output destination.<br>Defaults to the name of the selected project.                                              |
+| -doc     | Optional.<br>The type of document to be loaded.<br>The following document types are supported.<br> - yaml                                      |
 
 
 ## Note
