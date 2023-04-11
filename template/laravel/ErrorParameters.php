@@ -32,7 +32,7 @@ class ErrorParameters
         $params->code = $code;
         $params->resultCode = $resultCode;
         $params->message = $message ?? $resultCode;
-        $params->setHttpResponseCode(config('app.default_error_code', 400));
+        $params->setHttpResponseCode($responseCode);
         return $params;
     }
 
