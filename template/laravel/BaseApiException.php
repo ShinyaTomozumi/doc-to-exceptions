@@ -20,7 +20,7 @@ abstract class BaseApiException extends \Exception
      * @param ErrorParameters $params
      * @return JsonResponse
      */
-    protected function toJsonResponse(Request $request, Exception|Error $ex = null, ErrorParameters $params): JsonResponse
+    protected function toJsonResponse(Request $request, Exception|Error $ex, ErrorParameters $params): JsonResponse
     {
         $response = [
             "result" => $params->getResultCode(),
@@ -32,7 +32,7 @@ abstract class BaseApiException extends \Exception
         // For debug message
         $isDebug = env("APP_DEBUG", config("app.debug", false));
         if ($isDebug && $ex) {
-            $response["debugMessage"] = $ex->getMessage();
+            $response["debugMessage"] = $ex->getFile() . "(" . $ex->getLine() . ")";
             $response["debugTrace"] = explode("\n", $ex->getTraceAsString());
         }
 

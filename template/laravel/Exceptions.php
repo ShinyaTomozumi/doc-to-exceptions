@@ -16,9 +16,25 @@ class __class_name__ extends BaseApiException
     protected string $debugMessage = ""; // DebugMessage
     protected string $detail = ""; // Detail message
     protected ?Throwable $previous = null; // Throwable
+    protected int $responseCode = 400; // Response code
+    public string $errorMessage = "__message__"; // Message
+    public int $errorCode = __code__; // Code
+    public string $errorResultCode = "__result__"; // ResultCode
 
-    function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
+    function __construct(int $responseCode = 400, string $message = "", int $code = 0, ?Throwable $previous = null)
     {
+        // Set default response code
+        if ($responseCode !== 400) {
+            $this->responseCode = $responseCode;
+        }
+        // Set default message
+        if ($message === "") {
+            $message = $this->errorMessage;
+        }
+        // Set default code
+        if ($code === 0) {
+            $code = $this->errorCode;
+        }
         parent::__construct($message, $code, $previous);
     }
 
@@ -58,7 +74,7 @@ class __class_name__ extends BaseApiException
      */
     protected function getErrorParams(): ErrorParameters
     {
-        $errorParameters = ErrorParameters::create(__code__, "__result__", "__message__");
+        $errorParameters = ErrorParameters::create($this->errorCode, $this->errorResultCode, $this->errorMessage, $this->responseCode);
         __response_code__
         if ($this->debugMessage) {
             $errorParameters->setDebugMessage($this->debugMessage);

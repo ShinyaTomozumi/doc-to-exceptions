@@ -23,9 +23,10 @@ class ErrorParameters
      * @param int $code
      * @param string $resultCode
      * @param string|null $message
+     * @param int|null $responseCode
      * @return $this
      */
-    public static function create(int $code, string $resultCode, ?string $message = null): ErrorParameters|static
+    public static function create(int $code, string $resultCode, ?string $message = null, ?int $responseCode = 400): ErrorParameters|static
     {
         $params = new ErrorParameters();
         $params->code = $code;

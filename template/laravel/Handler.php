@@ -82,12 +82,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception|Throwable $e): mixed
     {
-        // Output error log
-        if ($e !== null) {
-            \Log::error($e->getMessage() . $e->getTraceAsString());
-        }
-
-
         // Return in json format for API access
         // APIでのアクセスの場合はjson形式で返却する
         $apiBaseName = env("API_BASE_NAME");
