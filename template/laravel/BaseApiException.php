@@ -32,7 +32,8 @@ abstract class BaseApiException extends \Exception
         // For debug message
         $isDebug = env("APP_DEBUG", config("app.debug", false));
         if ($isDebug && $ex) {
-            $response["debugMessage"] = $ex->getFile() . "(" . $ex->getLine() . ")";
+            $response["debugFile"] = $ex->getFile() . "(" . $ex->getLine() . ")";
+            $response["debugMessage"] = $ex->getMessage();
             $response["debugTrace"] = explode("\n", $ex->getTraceAsString());
         }
 
